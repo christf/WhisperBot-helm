@@ -1,0 +1,9 @@
+XMPP_PASS: xxxxx
+WHISPER_MODEL: small
+JID: "jid@example.com"
+NICK: Transcribe
+MUC: somemuctojoin@muc.example.com
+image: registry.example.com/whisperbit:1.0.0
+imagePullSecrets:
+  - name: container-registry-secret
+
