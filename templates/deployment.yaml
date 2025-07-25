@@ -26,18 +26,21 @@ spec:
       containers:
       - env:
         - name: JID
-          value: "transcribe@christofschulze.com"
+          value: {{ .Values.JID }}
         - name: WHISPER_MODEL
-          value: "small"
+          value: {{ default "small" .Values.WHISPER_MODEL }}
         - name: NICK
-          value: "Transcribe"
+          value: {{ default "Transcribe" .Values.NICK }}
         - name: ROOM
-          value: kpc@muc.christofschulze.com
+          value: {{ .Values.MUC }}
         - name: PASS
           valueFrom:
             secretKeyRef:
               name: whisperbot
               key: XMPP_PASS
+        - name: TZ
+          value: {{ default "America/Argentina/Buenos_Aires" .Values.TZ }}
+
         image: {{ .Values.image }}
         imagePullPolicy: IfNotPresent
         name: whisperbot
