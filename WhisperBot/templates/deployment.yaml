@@ -40,7 +40,8 @@ spec:
               key: XMPP_PASS
         - name: TZ
           value: {{ default "America/Argentina/Buenos_Aires" .Values.TZ }}
-
+        - name: OMP_NUM_THREADS
+          value: "{{ default 4 .Values.NUM_THREADS }}"
         image: {{ .Values.image }}
         imagePullPolicy: IfNotPresent
         name: whisperbot
